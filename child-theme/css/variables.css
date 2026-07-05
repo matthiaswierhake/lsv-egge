@@ -3,42 +3,32 @@
    ========================================================== */
 
 :root{
+	--lsv-blue:#0d4b8c;
+	--lsv-blue-dark:#08386a;
+	--lsv-blue-light:#f4f8fc;
 
-    --lsv-blue:#0d4b8c;
-    --lsv-blue-dark:#08386a;
-    --lsv-blue-light:#f4f8fc;
+	--lsv-green:#4caf50;
+	--lsv-orange:#ff9800;
 
-    --lsv-green:#4caf50;
-    --lsv-green-dark:#3c8f40;
+	--lsv-text:#10233f;
+	--lsv-muted:#5c6b7a;
 
-    --lsv-orange:#ff9800;
-    --lsv-orange-dark:#e28100;
+	--lsv-border:#d7e3ef;
+	--lsv-input-border:#ccd3db;
 
-    --lsv-text:#10233f;
-    --lsv-muted:#5c6b7a;
+	--lsv-white:#ffffff;
 
-    --lsv-border:#d7e3ef;
-    --lsv-input-border:#ccd3db;
+	--lsv-danger-bg:#ffe6e6;
+	--lsv-danger:#b00020;
+	--lsv-danger-border:#ffbaba;
 
-    --lsv-white:#ffffff;
-    --lsv-danger-bg:#ffe6e6;
-    --lsv-danger:#b00020;
-    --lsv-danger-border:#ffbaba;
+	--lsv-radius-sm:8px;
+	--lsv-radius-md:12px;
+	--lsv-radius-lg:18px;
 
-    --lsv-radius-sm:8px;
-    --lsv-radius-md:12px;
-    --lsv-radius-lg:18px;
-    --lsv-radius-xl:28px;
+	--lsv-shadow-sm:0 8px 20px rgba(0,0,0,.10);
+	--lsv-shadow-md:0 15px 35px rgba(0,0,0,.16);
+	--lsv-shadow-lg:0 20px 50px rgba(0,0,0,.20);
 
-    --lsv-shadow-sm:0 8px 20px rgba(0,0,0,.10);
-    --lsv-shadow-md:0 15px 35px rgba(0,0,0,.16);
-    --lsv-shadow-lg:0 20px 50px rgba(0,0,0,.20);
-
-    --lsv-space-xs:6px;
-    --lsv-space-sm:10px;
-    --lsv-space-md:18px;
-    --lsv-space-lg:30px;
-    --lsv-space-xl:45px;
-
-    --lsv-transition:.2s ease;
+	--lsv-transition:.2s ease;
 }

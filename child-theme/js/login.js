@@ -1,2 +1,13 @@
-// LSV Login JavaScript
-// Aktuell leer. Passwort-Anzeige ist derzeit inline im Shortcode umgesetzt.
+document.addEventListener('DOMContentLoaded', function () {
+
+	const toggle = document.querySelector('.lsv-toggle-password');
+	const field  = document.getElementById('lsv-password');
+
+	if (!toggle || !field) {
+		return;
+	}
+
+	toggle.addEventListener('click', function () {
+		field.type = field.type === 'password' ? 'text' : 'password';
+	});
+});

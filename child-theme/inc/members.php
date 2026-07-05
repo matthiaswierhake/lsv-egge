@@ -1,9 +1,12 @@
 <?php
 /**
- * Dieses Modul ist vorbereitet, aber noch nicht aktiv eingebunden.
- * Später können wir Code-Snippets schrittweise hierher verschieben.
+ * Mitgliederbereich
  */
 
 if ( ! defined( 'ABSPATH' ) ) {
-    exit;
+	exit;
 }
+
+/**
+ * Platzhalter für spätere Mitgliederfunktionen.
+ */
