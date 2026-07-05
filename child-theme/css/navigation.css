@@ -1,0 +1,20 @@
+/* ==========================================================
+   LSV EGGE - Navigation / Header
+   ========================================================== */
+
+/* Dropdown-Pfeil für Gäste ausblenden */
+body:not(.logged-in) .menu-login .dropdown-nav-toggle{
+    display:none !important;
+}
+
+/* Benutzer-Menü optisch etwas ruhiger */
+.menu-login > a{
+    font-weight:700;
+}
+
+/* Icon-Menüpunkte kompakt halten */
+.menu-login,
+.menu-member,
+.menu-logout{
+    white-space:nowrap;
+}

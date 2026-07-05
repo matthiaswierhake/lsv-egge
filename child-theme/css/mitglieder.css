@@ -1,0 +1,19 @@
+/* ==========================================================
+   LSV EGGE - Mitgliederbereich
+   ========================================================== */
+
+/* Platzhalter für Mitgliederportal, Kacheln, Dokumente und Profilseiten. */
+
+.lsv-member-grid{
+    display:grid;
+    gap:20px;
+}
+
+.lsv-member-tile{
+    background:var(--lsv-white);
+    border:1px solid var(--lsv-border);
+    border-radius:var(--lsv-radius-lg);
+    box-shadow:var(--lsv-shadow-sm);
+    padding:24px;
+    text-decoration:none;
+}
