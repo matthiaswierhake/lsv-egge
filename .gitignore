@@ -1,0 +1,16 @@
+# PHPStorm
+.idea/
+*.iml
+
+# Betriebssystem
+.DS_Store
+Thumbs.db
+
+# Logdateien
+*.log
+
+# Composer (falls später genutzt)
+vendor/
+
+# Node (falls später genutzt)
+node_modules/
