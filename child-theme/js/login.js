@@ -1,13 +1,21 @@
-document.addEventListener('DOMContentLoaded', function () {
+const button = document.querySelector(".lsv-toggle-password");
+const field  = document.getElementById("lsv-password");
+const icon   = button.querySelector(".dashicons");
 
-	const toggle = document.querySelector('.lsv-toggle-password');
-	const field  = document.getElementById('lsv-password');
+button.addEventListener("click", function () {
 
-	if (!toggle || !field) {
-		return;
+	if (field.type === "password") {
+
+		field.type = "text";
+		icon.classList.remove("dashicons-visibility");
+		icon.classList.add("dashicons-hidden");
+
+	} else {
+
+		field.type = "password";
+		icon.classList.remove("dashicons-hidden");
+		icon.classList.add("dashicons-visibility");
+
 	}
 
-	toggle.addEventListener('click', function () {
-		field.type = field.type === 'password' ? 'text' : 'password';
-	});
 });

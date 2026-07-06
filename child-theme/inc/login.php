@@ -159,3 +159,6 @@ function lsv_login_shortcode() {
 
 add_shortcode( 'lsv_login', 'lsv_login_shortcode' );
 add_shortcode( 'lsv_login_v2', 'lsv_login_shortcode' );
+
+//add_action( 'wp_enqueue_scripts', 'fastwp_load_dashicons' );
+/* WordPress Dashicons aktivieren */

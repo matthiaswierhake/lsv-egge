@@ -76,14 +76,26 @@
 	top:50%;
 	right:12px;
 	transform:translateY(-50%);
-	width:42px;
-	height:42px;
 	border:none;
 	border-radius:var(--lsv-radius-sm);
 	background:var(--lsv-blue);
 	color:#fff;
 	cursor:pointer;
 	transition:var(--lsv-transition);
+	display:flex;
+	justify-content:center;
+	align-items:center;
+	width:46px;
+	height:46px;
+
+}
+
+.lsv-toggle-password .dashicons{
+
+	font-size:28px;
+	width:28px;
+	height:28px;
+	line-height:28px;
 }
 
 .lsv-toggle-password:hover{

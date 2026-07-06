@@ -16,3 +16,11 @@ function lsv_theme_setup() {
 	 * Übersetzungen oder Theme Supports ergänzt werden.
 	 */
 }
+
+
+function lsv_include_dashicons_font(){
+//Lade Dashicons font
+    wp_enqueue_style('dashicons');
+}
+add_action( 'wp_enqueue_scripts', 'lsv_include_dashicons_font', 100 );
+
