@@ -1,6 +1,7 @@
 <?php
 
 require_once __DIR__ . '/Dashboard.php';
+require_once __DIR__ . '/Module.php';
 
 
 if ( ! defined( 'ABSPATH' ) ) {
@@ -9,20 +10,6 @@ if ( ! defined( 'ABSPATH' ) ) {
 
 class LSV_Editor {
 
-    private static function modules() {
-
-        return array(
-
-            'dashboard' => 'Dashboard',
-            'news'      => 'Neuigkeiten',
-            'events'    => 'Termine',
-            'images'    => 'Bilder',
-            'members'   => 'Mitglieder',
-            'settings'  => 'Einstellungen',
-
-        );
-
-    }
 
 
 
@@ -57,7 +44,7 @@ class LSV_Editor {
 
                         $current = $_GET['module'] ?? 'dashboard';
 
-                        foreach ( self::modules() as $id => $title ) :
+                        foreach ( LSV_Module::all() as $id => $module ) :
 
                             ?>
 
@@ -65,7 +52,8 @@ class LSV_Editor {
 
                                 <a href="?module=<?php echo esc_attr( $id ); ?>">
 
-                                    <?php echo esc_html( $title ); ?>
+                                    <?php echo $module['icon']; ?>
+                                    <?php echo esc_html( $module['title'] ); ?>
 
                                 </a>
 
