@@ -55,6 +55,11 @@ require_once get_stylesheet_directory() . '/inc/members.php';
 require_once get_stylesheet_directory() . '/inc/shortcodes.php';
 
 /**
+ * Shortcodes
+ */
+require_once get_stylesheet_directory() . '/inc/news.php';
+
+/**
  * CSS-Dateien laden
  */
 add_action( 'wp_enqueue_scripts', 'lsv_enqueue_styles', 20 );
