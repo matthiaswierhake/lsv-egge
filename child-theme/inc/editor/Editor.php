@@ -1,5 +1,8 @@
 <?php
 
+require_once __DIR__ . '/Dashboard.php';
+
+
 if ( ! defined( 'ABSPATH' ) ) {
     exit;
 }
@@ -120,9 +123,9 @@ class LSV_Editor {
 
                         default:
 
-                            echo '<h2>Dashboard</h2>';
-                            echo '<p>Willkommen im LSV CMS.</p>';
+                            echo LSV_Dashboard::render();
 
+                            break;
                     }
                     ?>
                 </section>

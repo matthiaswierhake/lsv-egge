@@ -107,3 +107,23 @@
     color:#666;
 
 }
+
+.lsv-card{
+
+    background:#fff;
+
+    border:1px solid #d8dee8;
+
+    border-radius:10px;
+
+    padding:24px;
+
+    margin-top:25px;
+
+}
+
+.lsv-card h3{
+
+    margin-top:0;
+
+}
