@@ -10,7 +10,7 @@ if ( ! defined( 'ABSPATH' ) ) {
 /**
  * Rollen mit Dashboard-Zugriff.
  */
-function lsv_dashboard_roles() {
+function lsv_edit_news() {
 
 	return array(
 		'administrator',
