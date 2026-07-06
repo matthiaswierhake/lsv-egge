@@ -2,6 +2,7 @@
 
 require_once __DIR__ . '/Dashboard.php';
 require_once __DIR__ . '/Module.php';
+require_once __DIR__ . '/News.php';
 
 
 if ( ! defined( 'ABSPATH' ) ) {
@@ -76,10 +77,10 @@ class LSV_Editor {
 
                         case 'news':
 
-                            echo '<h2>Neuigkeiten</h2>';
-                            echo '<p>Hier entsteht das News-Modul.</p>';
+                            echo LSV_News::render();
 
                             break;
+
 
                         case 'events':
 
