@@ -12,20 +12,54 @@ class LSV_News {
     public static function render() {
 
         ob_start();
+        $action = $_GET['action'] ?? 'list';
         ?>
 
-        <?php echo LSV_Form::begin( 'Neue Neuigkeit' ); ?>
+        <h2>📰 Neuigkeiten</h2>
 
-                <?php
+        <?php if ( $action === 'new' ) : ?>
 
-                echo LSV_Field::text(
-                    'title',
-                    'Titel'
-                );
+            <p>
+                <a href="?module=news">
+                    ← Zurück zur Liste
+                </a>
+            </p>
 
-                ?>
+            <?php echo LSV_Form::begin( 'Neue Neuigkeit' ); ?>
 
-        <?php echo LSV_Form::end(); ?>
+            <?php
+            LSV_Form::text(
+                'title',
+                'Titel'
+            );            ?>
+
+            <?php echo LSV_Form::end(); ?>
+
+        <?php else : ?>
+
+            <p>
+
+                <a class="button button-primary"
+                   href="?module=news&action=new">
+
+                    ➕ Neue Neuigkeit
+
+                </a>
+
+            </p>
+
+            <?php echo LSV_Card::begin( 'Neuigkeiten' ); ?>
+
+            <p>
+                Noch keine Neuigkeiten vorhanden.
+            </p>
+
+            <?php echo LSV_Card::end(); ?>
+
+        <?php endif; ?>
+
+
+
 
         <?php
 

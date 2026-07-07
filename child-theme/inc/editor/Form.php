@@ -1,4 +1,5 @@
 <?php
+require_once __DIR__ . '/Field.php';
 
 if ( ! defined( 'ABSPATH' ) ) {
     exit;
@@ -18,6 +19,20 @@ class LSV_Form {
         <?php
 
         return ob_get_clean();
+    }
+
+    public static function text(
+        $name,
+        $label,
+        $value = ''
+    ) {
+
+        echo LSV_Field::text(
+            $name,
+            $label,
+            $value
+        );
+
     }
 
     public static function end( $button_text = 'Speichern' ) {
