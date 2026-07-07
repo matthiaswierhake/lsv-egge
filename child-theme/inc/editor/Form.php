@@ -1,20 +1,22 @@
 <?php
 require_once __DIR__ . '/Field.php';
 
-if ( ! defined( 'ABSPATH' ) ) {
+if (!defined('ABSPATH')) {
     exit;
 }
 
-class LSV_Form {
+class LSV_Form
+{
 
-    public static function begin( $title ) {
+    public static function begin($title)
+    {
 
         ob_start();
         ?>
 
         <form class="lsv-form" method="post">
 
-        <h3><?php echo esc_html( $title ); ?></h3>
+        <h3><?php echo esc_html($title); ?></h3>
 
         <?php
 
@@ -25,7 +27,8 @@ class LSV_Form {
         $name,
         $label,
         $value = ''
-    ) {
+    )
+    {
 
         echo LSV_Field::text(
             $name,
@@ -35,14 +38,27 @@ class LSV_Form {
 
     }
 
-    public static function end( $button_text = 'Speichern' ) {
+
+    public static function textarea($name, $label, $value = '')
+    {
+
+        echo LSV_Field::textarea(
+            $name,
+            $label,
+            $value
+        );
+
+    }
+
+    public static function end($button_text = 'Speichern')
+    {
 
         ob_start();
         ?>
 
         <p class="lsv-form-actions">
             <button type="submit" class="button button-primary">
-                <?php echo esc_html( $button_text ); ?>
+                <?php echo esc_html($button_text); ?>
             </button>
         </p>
 

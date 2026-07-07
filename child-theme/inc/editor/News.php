@@ -3,6 +3,7 @@ require_once __DIR__ . '/Field.php';
 require_once __DIR__ . '/Card.php';
 require_once __DIR__ . '/Form.php';
 require_once __DIR__ . '/Toolbar.php';
+require_once __DIR__ . '/DataProvider.php';
 
 if (!defined('ABSPATH')) {
     exit;
@@ -16,7 +17,82 @@ class LSV_News
 
         ob_start();
         $action = $_GET['action'] ?? 'list';
+        $post_id = isset($_GET['post'])
+            ? (int)$_GET['post']
+            : 0;
+
+        if (
+            $_SERVER['REQUEST_METHOD'] === 'POST'
+            && isset($_POST['title'])
+
+        ) {
+
+            $title = sanitize_text_field(
+                $_POST['title']
+            );
+
+            $summary = isset( $_POST['summary'] )
+                ? sanitize_textarea_field( $_POST['summary'] )
+                : '';
+
+            if ( $action === 'edit' && $post_id ) {
+
+                wp_update_post( array(
+
+                    'ID'         => $post_id,
+                    'post_title' => $title,
+                    'post_excerpt' => $summary,
+                ) );
+
+            }
+            elseif ( $action === 'new' ) {
+
+                $new_id = wp_insert_post( array(
+
+                    'post_type'   => 'post',
+                    'post_status' => 'publish',
+                    'post_title'  => $title,
+                    'post_excerpt' => $summary,
+
+                ) );
+
+                if ( $new_id && ! is_wp_error( $new_id ) ) {
+
+                    wp_redirect(
+                        add_query_arg(
+                            array(
+                                'module' => 'news',
+                                'action' => 'edit',
+                                'post'   => $new_id,
+                            )
+                        )
+                    );
+
+                    exit;
+
+                }
+
+            }
+
+        }
+        $title = '';
+        $summary = '';
+
+        if ($action === 'edit' && $post_id) {
+
+            $post = get_post($post_id);
+
+            if ($post) {
+
+                $title = $post->post_title;
+                $summary = $post->post_excerpt;
+            }
+
+        }
+
+
         ?>
+
 
         <?php
         echo LSV_Toolbar::render(
@@ -25,7 +101,7 @@ class LSV_News
         );
         ?>
 
-        <?php if ($action === 'new') : ?>
+        <?php if ($action === 'new' || $action === 'edit') : ?>
 
         <p>
             <a href="?module=news">
@@ -33,41 +109,58 @@ class LSV_News
             </a>
         </p>
 
+
         <?php echo LSV_Form::begin('Neue Neuigkeit'); ?>
 
         <?php
+
         LSV_Form::text(
             'title',
-            'Titel'
-        ); ?>
+            'Titel',
+            $title
+        );
+
+        LSV_Form::textarea(
+            'summary',
+            'Kurztext',
+            $summary
+        );
+
+        ?>
 
         <?php echo LSV_Form::end(); ?>
+
 
     <?php else : ?>
         <?php
 
-        $query = new WP_Query( array(
-            'post_type'      => 'post',
-            'posts_per_page' => 20,
-            'orderby'        => 'date',
-            'order'          => 'DESC',
-        ) );
+        $query = LSV_DataProvider::posts();
 
         ?>
 
-        <?php echo LSV_Card::begin( 'Vorhandene Neuigkeiten' ); ?>
+        <?php echo LSV_Card::begin('Vorhandene Neuigkeiten'); ?>
 
-        <?php if ( $query->have_posts() ) : ?>
+        <?php if ($query->have_posts()) : ?>
 
             <ul class="lsv-news-list">
 
-                <?php while ( $query->have_posts() ) : $query->the_post(); ?>
+                <?php while ($query->have_posts()) : $query->the_post(); ?>
 
                     <li>
 
-                        <strong><?php the_title(); ?></strong><br>
+                        <strong><?php the_title(); ?></strong>
 
-                        <small><?php echo esc_html( get_the_date( 'd.m.Y' ) ); ?></small>
+                        <a
+                                href="?module=news&action=edit&post=<?php the_ID(); ?>"
+                                style="margin-left:15px;">
+
+                            ✏ Bearbeiten
+
+                        </a>
+
+                        <br>
+
+                        <small><?php echo esc_html(get_the_date('d.m.Y')); ?></small>
 
                     </li>
 
