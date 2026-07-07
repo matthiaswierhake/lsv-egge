@@ -2,63 +2,58 @@
 require_once __DIR__ . '/Field.php';
 require_once __DIR__ . '/Card.php';
 require_once __DIR__ . '/Form.php';
+require_once __DIR__ . '/Toolbar.php';
 
-if ( ! defined( 'ABSPATH' ) ) {
+if (!defined('ABSPATH')) {
     exit;
 }
 
-class LSV_News {
+class LSV_News
+{
 
-    public static function render() {
+    public static function render()
+    {
 
         ob_start();
         $action = $_GET['action'] ?? 'list';
         ?>
 
-        <h2>📰 Neuigkeiten</h2>
+        <?php
+        echo LSV_Toolbar::render(
+            'Neuigkeiten',
+            '?module=news&action=new'
+        );
+        ?>
 
-        <?php if ( $action === 'new' ) : ?>
+        <?php if ($action === 'new') : ?>
 
-            <p>
-                <a href="?module=news">
-                    ← Zurück zur Liste
-                </a>
-            </p>
+        <p>
+            <a href="?module=news">
+                ← Zurück zur Liste
+            </a>
+        </p>
 
-            <?php echo LSV_Form::begin( 'Neue Neuigkeit' ); ?>
+        <?php echo LSV_Form::begin('Neue Neuigkeit'); ?>
 
-            <?php
-            LSV_Form::text(
-                'title',
-                'Titel'
-            );            ?>
+        <?php
+        LSV_Form::text(
+            'title',
+            'Titel'
+        ); ?>
 
-            <?php echo LSV_Form::end(); ?>
+        <?php echo LSV_Form::end(); ?>
 
-        <?php else : ?>
+    <?php else : ?>
 
-            <p>
+        <?php echo LSV_Card::begin('Neuigkeiten'); ?>
 
-                <a class="button button-primary"
-                   href="?module=news&action=new">
+        <p>
+            Noch keine Neuigkeiten vorhanden.
+        </p>
 
-                    ➕ Neue Neuigkeit
+        <?php echo LSV_Card::end(); ?>
 
-                </a>
-
-            </p>
-
-            <?php echo LSV_Card::begin( 'Neuigkeiten' ); ?>
-
-            <p>
-                Noch keine Neuigkeiten vorhanden.
-            </p>
-
-            <?php echo LSV_Card::end(); ?>
-
-        <?php endif; ?>
-
-
+    <?php endif; ?>
 
 
         <?php
