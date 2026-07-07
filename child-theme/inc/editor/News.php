@@ -1,4 +1,5 @@
 <?php
+require_once __DIR__ . '/Field.php';
 
 if ( ! defined( 'ABSPATH' ) ) {
     exit;
@@ -19,21 +20,28 @@ class LSV_News {
 
         <div class="lsv-card">
 
-            <p>
+            <form>
 
-                Noch keine Neuigkeiten vorhanden.
+                <?php
 
-            </p>
+                echo LSV_Field::text(
+                    'title',
+                    'Titel'
+                );
 
-            <p>
+                ?>
 
-                <button class="button button-primary">
+                <p>
 
-                    ➕ Neue Neuigkeit
+                    <button class="button button-primary">
 
-                </button>
+                        Speichern
 
-            </p>
+                    </button>
+
+                </p>
+
+            </form>
 
         </div>
 
