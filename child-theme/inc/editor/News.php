@@ -44,12 +44,44 @@ class LSV_News
         <?php echo LSV_Form::end(); ?>
 
     <?php else : ?>
+        <?php
 
-        <?php echo LSV_Card::begin('Neuigkeiten'); ?>
+        $query = new WP_Query( array(
+            'post_type'      => 'post',
+            'posts_per_page' => 20,
+            'orderby'        => 'date',
+            'order'          => 'DESC',
+        ) );
 
-        <p>
-            Noch keine Neuigkeiten vorhanden.
-        </p>
+        ?>
+
+        <?php echo LSV_Card::begin( 'Vorhandene Neuigkeiten' ); ?>
+
+        <?php if ( $query->have_posts() ) : ?>
+
+            <ul class="lsv-news-list">
+
+                <?php while ( $query->have_posts() ) : $query->the_post(); ?>
+
+                    <li>
+
+                        <strong><?php the_title(); ?></strong><br>
+
+                        <small><?php echo esc_html( get_the_date( 'd.m.Y' ) ); ?></small>
+
+                    </li>
+
+                <?php endwhile; ?>
+
+            </ul>
+
+            <?php wp_reset_postdata(); ?>
+
+        <?php else : ?>
+
+            <p>Noch keine Neuigkeiten vorhanden.</p>
+
+        <?php endif; ?>
 
         <?php echo LSV_Card::end(); ?>
 
