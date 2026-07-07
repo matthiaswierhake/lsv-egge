@@ -1,5 +1,7 @@
 <?php
 require_once __DIR__ . '/Field.php';
+require_once __DIR__ . '/Card.php';
+require_once __DIR__ . '/Form.php';
 
 if ( ! defined( 'ABSPATH' ) ) {
     exit;
@@ -12,15 +14,7 @@ class LSV_News {
         ob_start();
         ?>
 
-        <h2>📰 Neuigkeiten</h2>
-
-        <p>
-            Hier entsteht das News-Modul.
-        </p>
-
-        <div class="lsv-card">
-
-            <form>
+        <?php echo LSV_Form::begin( 'Neue Neuigkeit' ); ?>
 
                 <?php
 
@@ -31,19 +25,7 @@ class LSV_News {
 
                 ?>
 
-                <p>
-
-                    <button class="button button-primary">
-
-                        Speichern
-
-                    </button>
-
-                </p>
-
-            </form>
-
-        </div>
+        <?php echo LSV_Form::end(); ?>
 
         <?php
 
